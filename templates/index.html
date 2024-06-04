@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container" style="margin-top: 50px;">
+    <div class="card bg-dark text-white">
+        <img src="{{url_for('static', filename = 'banner.jpg')}}" class="card-img" alt="banner">
+    </div>
+<div class="container" style="margin: 50px 0;">
+    <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#modal">Run Tests</button>
+</div>
+
+<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="title" aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+    <div class="modal-header">
+        <h5 class="modal-title" id="title">Please fill in the details with great accuracy to compute accurate results and help train the model.</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <form action="/result/" method="POST">
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <label for="ph">pH</label>
+                    <input type="number" step="any" min="1" max="14" class="form-control text-center text-white bg-dark" name="ph" placeholder="pH of water (1 to 14)" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <label for="hardness">Hardness (mg/L)</label>
+                    <input type="number" step="any" class="form-control text-center text-white bg-dark" name="hardness" placeholder="Capacity of water to precipitate soap" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <label for="solids">Solids (ppm)</label>
+                    <input type="number" step="any" class="form-control text-center text-white bg-dark" name="solids" placeholder="Total dissolved solids" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <label for="chloramines">Chloramines (ppm)</label>
+                    <input type="number" step="any" class="form-control text-center text-white bg-dark" name="chloramines" placeholder="Amount of Chloramines" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <label for="sulfate">Sulfate (mg/L)</label>
+                    <input type="number" step="any" class="form-control text-center text-white bg-dark" name="sulfate" placeholder="Amount of Sulfates dissolved" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <label for="conductivity">Conductivity (&mu;S/cm)</label>
+                    <input type="number" step="any" class="form-control text-center text-white bg-dark" name="conductivity" placeholder="Electrical conductivity of water" required>
+                </div>	
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <label for="oc">Organic carbon (ppm)</label>
+                    <input type="number" step="any" class="form-control text-center text-white bg-dark" name="oc" placeholder="Amount of organic carbon" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <label for="trihalomethanes">Trihalomethanes (&mu;g/L)</label>
+                    <input type="number" step="any" class="form-control text-center text-white bg-dark" name="trihalomethanes" placeholder="Amount of Trihalomethanes" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <label for="turbidity">Turbidity (NTU)</label>
+                    <input type="number" step="any" class="form-control text-center text-white bg-dark" name="turbidity" placeholder="Measure of light emiting property of water" required>
+                </div>
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-outline-secondary" data-dismiss="modal" aria-label="Close">Close</button>
+            <button type="submit" class="btn btn-success">Submit</button>
+        </div>
+        </form>
+    </div>
+    </div>
+</div>
+</div>
+</div>
+
+<style>
+.form-control::placeholder {
+    color: #ffffffaa;
+}
+label {
+    font-size: 20px;
+}
+</style>
+
+{% endblock %}
